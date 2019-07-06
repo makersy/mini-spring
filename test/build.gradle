@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group 'top.makersy'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven{ url'http://maven.aliyun.com/nexus/content/groups/public/'}
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile(project(':framework'))  //兄弟模块
+}
+
+jar{
+    manifest{
+        attributes 'Main-Class':"top.makersy.Application"
+    }
+
+    from{
+        configurations.compile.collect{
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
