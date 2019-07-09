@@ -1,6 +1,6 @@
 ## mini-spring
 
-一个简易版springmvc的框架
+一个简易版springmvc框架
 
 ### 使用工具
 
