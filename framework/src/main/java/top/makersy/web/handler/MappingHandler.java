@@ -1,5 +1,7 @@
 package top.makersy.web.handler;
 
+import top.makersy.beans.BeanFactory;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +32,7 @@ public class MappingHandler {
             parameters[i] = request.getParameter(args[i]);
         }
 
-        Object ctl = controller.newInstance();
+        Object ctl = BeanFactory.getBean(controller);
         Object res = method.invoke(ctl, parameters);
         response.getWriter().println(res.toString());
         return true;

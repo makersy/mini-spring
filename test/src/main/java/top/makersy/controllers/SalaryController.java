@@ -1,5 +1,7 @@
 package top.makersy.controllers;
 
+import top.makersy.beans.Autowired;
+import top.makersy.service.SalaryService;
 import top.makersy.web.mvc.Controller;
 import top.makersy.web.mvc.RequestMapping;
 import top.makersy.web.mvc.RequestParam;
@@ -11,8 +13,11 @@ import top.makersy.web.mvc.RequestParam;
 @Controller
 public class SalaryController {
 
+    @Autowired
+    private SalaryService salaryService;
+
     @RequestMapping("/get_salary.json")
     public Integer getSalary(@RequestParam("name") String name, @RequestParam("experience") String experience) {
-        return 10000;
+        return salaryService.calSalary(Integer.parseInt(experience));
     }
 }

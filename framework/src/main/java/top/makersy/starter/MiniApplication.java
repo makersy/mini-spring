@@ -1,6 +1,7 @@
 package top.makersy.starter;
 
 import org.apache.catalina.LifecycleException;
+import top.makersy.beans.BeanFactory;
 import top.makersy.core.ClassScanner;
 import top.makersy.web.handler.HandlerManager;
 import top.makersy.web.server.TomcatServer;
@@ -19,9 +20,10 @@ public class MiniApplication {
         try {
             tomcatServer.startTomcat();
             List<Class<?>> classList = ClassScanner.scanClass(cls.getPackage().getName());
+            BeanFactory.initBean(classList);
             HandlerManager.resolveMappingHandler(classList);
-            classList.forEach(it -> System.out.println(it.getName()));
-        } catch (LifecycleException | IOException | ClassNotFoundException e) {
+//            classList.forEach(it -> System.out.println(it.getName()));
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
