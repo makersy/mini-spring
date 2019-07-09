@@ -19,3 +19,13 @@ Spring框架中以下注解：
 - `@RequestParam`
 - `@Autowired`
 - `@Bean`
+
+### 运行
+
+Terminal中输入：
+
+`gradle clean build`
+
+`java -jar .\test\build\libs\test-1.0-SNAPSHOT.jar`
+
+浏览器中访问：http://localhost:6699
